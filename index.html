@@ -1,42 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Geocoding Service</title>
+    <title>Foodshare.me</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
-        /* Always set the map height explicitly to define the size of the div
+	        /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
             height: 100%;
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
-            height: 100%;
+            height: 80%;
             margin: 0;
             padding: 0;
         }
-        #floating-panel {
-            position: absolute;
-            top: 10px;
-            left: 0%;
-            z-index: 5;
-            background-color: #fff;
-            /*padding: 5px;*/
-            /*border: 1px solid #999;*/
-            text-align: center;
-            font-family: 'Roboto','sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
-    </style>
+
+		</style>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body>
 
-<div id="floating-panel">
-    <form>
-		Zipcode:
-        <input id="address" type="textbox" value="21218">
+<!-- Title -->
+
+<div style=" border-bottom: 5px solid green; padding-bottom: 20px" >
+	<img class="w3-image" src="foodsharelogo.png" alt="Me" width="50%"  >
+
+</div>
+<div style="height:50px">
+</div>
+<!-- Header Picture -->
+
+<!-- <div style="text-align:center">
+	<img class="w3-image" src="mealbackground.jpg" alt="Me" width="1500" height="600"  >
+  <div class="w3-display-container w3-padding-large w3-border w3-wide w3-center">
+    <h5 class="w3-hide-medium w3-hide-small w3-xxxlarge">Welcome</h5>
+    <h3 class="w3-hide-medium w3-hide-small">Join your local FoodShare</h3>
+	</div>
+</div> -->
+
+
+<!-- First Photo Grid-->
+  <div class="w3-row-padding" class="clearfix" style="text-align:center">
+        <div class="w3-third w3-container w3-margin-bottom" class="img-container">
+          <img src="iconhealth.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Health Care</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom" class="clearfix" class="img-container">
+          <img src="iconmoney.jpg" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Cost Effective</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container" class="clearfix" class="img-container">
+          <img src="iconpeople.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Community </b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+	</div>
+
+</div>
+<div style="height:20px">
+</div>
+<div style=" border-bottom: 5px solid green; padding-bottom: 20px" >
+</div>
+<div style="float: left; padding: 50px;  height: 200px; ">
+    <form  style="text-align:center">
+		<h2 style="">Search within your community</h2>
+		<h3 style="">Simply, enter your zipcode</h3>
+</div>
+<div style="float: left; padding: 50px; height: 200px;">
+        <input id="address" type="textbox" style="width: 150px; height: 50px; font-size: 32px; text-align: center" value="21218">
         <button id="submit" type="button" value="Go!">Go!</button>
     </form>
 </div>
@@ -44,10 +90,9 @@
 <br>
 <br>
 
-<!--<div id="floating-panel">-->
-    <!--<input id="address" type="textbox" value="Sydney, NSW">-->
-    <!--<input id="submit" type="button" value="Geocode">-->
-<!--</div>-->
+
+<!-- Map Area-->
+
 
 <div id="map"></div>
 <script>
@@ -57,6 +102,8 @@
             center: {lat: 39.298456, lng:  -76.576585}
         });
         var geocoder = new google.maps.Geocoder();
+		
+		geocodeAddress(geocoder, map);
 
         document.getElementById('submit').addEventListener('click', function() {
             geocodeAddress(geocoder, map);
@@ -81,8 +128,10 @@
 				var markers = xml.documentElement.getElementsByTagName('marker');
 				Array.prototype.forEach.call(markers, function(markerElem) {
 				  var id = markerElem.getAttribute('id');
-				  var name = markerElem.getAttribute('name');
+				  var name = markerElem.getAttribute('host');
 				  var address2 = markerElem.getAttribute('address');
+				  var description = markerElem.getAttribute('description');
+
 				  var point = new google.maps.LatLng(
 					  parseFloat(markerElem.getAttribute('lat')),
 					  parseFloat(markerElem.getAttribute('lng')));
@@ -92,10 +141,23 @@
 				  strong.textContent = name
 				  infowincontent.appendChild(strong);
 				  infowincontent.appendChild(document.createElement('br'));
-
+				 
 				  var text = document.createElement('text');
 				  text.textContent = address2
 				  infowincontent.appendChild(text);
+				  infowincontent.appendChild(document.createElement('br'));
+
+				  var descriptionText = document.createElement('text');
+				  descriptionText.textContent = description;
+				  infowincontent.appendChild(descriptionText);
+				  infowincontent.appendChild(document.createElement('br'));
+				  
+				  var createA = document.createElement('a');
+				  var createAText = document.createTextNode('More details');
+					createA.setAttribute('href', ("eventview.php?eid="+id));
+					createA.appendChild(createAText);
+					infowincontent.appendChild(createA);
+				  
 				  var icon = {};
 				  var marker = new google.maps.Marker({
 					map: resultsMap,
@@ -158,6 +220,68 @@
 		request.send(params);
 	}
 </script>
+
+<br>
+<br>
+<h4  style="text-align:center">Filters</h4>
+
+<!-- 	<div class="slidecontainer" style="text-align:center">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Cost (1-100): <span id="demo"></span></p>
+	  </div>
+          <script>
+                var slider = document.getElementById("myRange");
+                var output = document.getElementById("demo");
+                output.innerHTML = slider.value;
+                
+                slider.oninput = function() {
+                  output.innerHTML = this.value;
+                }
+        </script> -->
+          <br>
+
+  <!-- Check boxes-->
+  <div class="w3-row-padding" class="clearfix" style="text-align:center">
+        <div class="w3-third w3-container w3-margin-bottom">
+          <div class="w3-container w3-white">
+                <label class="container">Celiac
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                      
+                      <label class="container">Autism
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom" class="clearfix" >
+          <div class="w3-container w3-white">
+                <label class="container">Diabetes
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                      
+                      <label class="container">Candida
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+        <div class="w3-third w3-container" class="clearfix" >
+          <div class="w3-container w3-white">
+                <label class="container">Cardio
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    
+                          <label class="container">Vegan
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+	</div>
 <script async defe
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
 </script>
