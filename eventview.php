@@ -30,6 +30,8 @@
 	if (!$result) {
 	  die('Invalid query: ' . mysqli_error());
 	}
+	
+	$row = @mysqli_fetch_assoc($result);
 
 ?>
 <!DOCTYPE html>
