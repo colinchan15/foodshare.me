@@ -145,9 +145,16 @@
 				  infowincontent.appendChild(text);
 				  
 				  var descriptionText = document.createElement('text');
-					text.textContent = description;
-				  infowincontent.appendChild(strong);
+				  descriptionText.textContent = description;
+				  infowincontent.appendChild(descriptionText);
 				  infowincontent.appendChild(document.createElement('br'));
+				  
+				  var createA = document.createElement('a');
+				  var createAText = document.createTextNode('More details');
+					createA.setAttribute('href', ("eventview.php?eid="+id));
+				  descriptionText.textContent = description;
+				  infowincontent.appendChild(descriptionText);
+				  
 				  var icon = {};
 				  var marker = new google.maps.Marker({
 					map: resultsMap,
