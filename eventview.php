@@ -206,14 +206,17 @@ text-align: center;
         <h5><?phpecho $row['zip'];?></h5>
     <h5><b>Description:</b></h5>
         <h5><?phpecho $row['Description'];?></h5>
-    <h5><b>Emnail:</b></h5>
-        <h5> </h5>
+    <h5><b>Email:</b></h5>
+        <h5><?phpecho $row['email'];?></h5>
     <h5><b>Phone:</b></h5>
-        <h5> </h5>
-        <p><span class="w3-tag w3-blue">Celiac</span></p>
-        <p><span class="w3-tag w3-blue">Diabetes</span></p>
-        <p><span class="w3-tag w3-blue">Candida</span></p>
-        <p><span class="w3-tag w3-blue">Cardio</span></p>
-        <p><span class="w3-tag w3-blue">Vegetarian</span></p>
+        <h5><?phpecho $row['phone'];?></h5>
+		<p>
+        <span class="w3-tag w3-blue">Celiac</span>
+        <span class="w3-tag w3-blue">Diabetes</span>
+        <span class="w3-tag w3-blue">Candida</span>
+        <span class="w3-tag w3-blue">Cardio</span>
+        <span class="w3-tag w3-blue">Vegetarian</span>
+		</p>
+	<button id="return" type="button" value="Go!">Return</button>
 
 </html>
