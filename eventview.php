@@ -218,6 +218,8 @@ text-align: center;
         <span class="w3-tag w3-blue">Cardio</span>
         <span class="w3-tag w3-blue">Vegetarian</span>
 		</p>
-	<button id="return" type="button" value="Go!">Return</button>
+	<button id="return" type="button" >Return</button>
+	<button id="return" type="button" onclick="window.print();return false;">Print</button>
+
 </div>
 </html>
