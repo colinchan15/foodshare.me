@@ -44,9 +44,9 @@ if (!$db_selected) {
   die ('Can\'t use db : ' . mysqli_error());
 }
 // Select all the rows in the markers table
-//$query = "SELECT * FROM events WHERE 1";
+$query = "SELECT * FROM events WHERE 1";
 
-$query = "SELECT * FROM events WHERE celiac = $celiac AND vegetarian = $vegetarian AND diabetes = $diabetes AND candiada = $candiada AND cardio = $cardio";
+//$query = "SELECT * FROM events WHERE celiac = $celiac AND vegetarian = $vegetarian AND diabetes = $diabetes AND candiada = $candiada AND cardio = $cardio";
 
 file_put_contents("/home/btoro93/log.txt", '/n', FILE_APPEND);
 file_put_contents("/home/btoro93/log.txt", $query, FILE_APPEND);
