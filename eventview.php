@@ -197,19 +197,19 @@ text-align: center;
 
 <div class="w3-display-container w3-padding-large"  style="text-align:left">
     <h5><b>Host Name:</b></h5>
-        <h5>$row['host']</h5>
+        <h5><?phpecho $row['host'];?></h5>
     <h5><b>Address:</b></h5>
-        <h5>$row['address']</h5>
+        <h5><?phpecho $row['address'];?></h5>
     <h5><b>City:</b></h5>
-        <h5>$row['city']</h5>
+        <h5><?phpecho $row['city'];?></h5>
     <h5><b>Zipcode:</b></h5>
-        <h5>$row['zip']</h5>
+        <h5><?phpecho $row['zip'];?></h5>
     <h5><b>Description:</b></h5>
-        <h5>$row['Description']</h5>
+        <h5><?phpecho $row['Description'];?></h5>
     <h5><b>Emnail:</b></h5>
-        <h5>$row['email']</h5>
+        <h5> </h5>
     <h5><b>Phone:</b></h5>
-        <h5>$row['phone']</h5>
+        <h5> </h5>
         <p><span class="w3-tag w3-blue">Celiac</span></p>
         <p><span class="w3-tag w3-blue">Diabetes</span></p>
         <p><span class="w3-tag w3-blue">Candida</span></p>
