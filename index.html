@@ -29,17 +29,21 @@
 
 <!-- Title -->
 
-<h1><b>TITLE</b></h1>
+<div style=" border-bottom: 5px solid green; padding-bottom: 20px" >
+	<img class="w3-image" src="foodsharelogo.png" alt="Me" width="50%"  >
 
+</div>
+<div style="height:50px">
+</div>
 <!-- Header Picture -->
 
-<div style="text-align:center">
+<!-- <div style="text-align:center">
 	<img class="w3-image" src="mealbackground.jpg" alt="Me" width="1500" height="600"  >
   <div class="w3-display-container w3-padding-large w3-border w3-wide w3-center">
     <h5 class="w3-hide-medium w3-hide-small w3-xxxlarge">Welcome</h5>
     <h3 class="w3-hide-medium w3-hide-small">Join your local FoodShare</h3>
 	</div>
-</div>
+</div> -->
 
 
 <!-- First Photo Grid-->
@@ -47,32 +51,38 @@
         <div class="w3-third w3-container w3-margin-bottom" class="img-container">
           <img src="iconhealth.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>Lorem Ipsum</b></p>
+            <p><b>Health Care</b></p>
             <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
           </div>
         </div>
         <div class="w3-third w3-container w3-margin-bottom" class="clearfix" class="img-container">
           <img src="iconmoney.jpg" alt="Norway" style="width:30%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>Lorem Ipsum</b></p>
+            <p><b>Cost Effective</b></p>
             <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
           </div>
         </div>
         <div class="w3-third w3-container" class="clearfix" class="img-container">
           <img src="iconpeople.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>Lorem Ipsum</b></p>
+            <p><b>Community </b></p>
             <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
           </div>
         </div>
 	</div>
 
-
-
-<div>
+</div>
+<div style="height:20px">
+</div>
+<div style=" border-bottom: 5px solid green; padding-bottom: 20px" >
+</div>
+<div style="float: left; padding: 50px;  height: 200px; ">
     <form  style="text-align:center">
-		Zipcode:
-        <input id="address" type="textbox" value="21218">
+		<h2 style="">Search within your community</h2>
+		<h3 style="">Simply, enter your zipcode</h3>
+</div>
+<div style="float: left; padding: 50px; height: 200px;">
+        <input id="address" type="textbox" style="width: 150px; height: 50px; font-size: 32px; text-align: center" value="21218">
         <button id="submit" type="button" value="Go!">Go!</button>
     </form>
 </div>
@@ -118,6 +128,8 @@
 				  var id = markerElem.getAttribute('id');
 				  var name = markerElem.getAttribute('name');
 				  var address2 = markerElem.getAttribute('address');
+				  var description = markerElem.getAttribute('description');
+
 				  var point = new google.maps.LatLng(
 					  parseFloat(markerElem.getAttribute('lat')),
 					  parseFloat(markerElem.getAttribute('lng')));
@@ -127,10 +139,15 @@
 				  strong.textContent = name
 				  infowincontent.appendChild(strong);
 				  infowincontent.appendChild(document.createElement('br'));
-
+				 
 				  var text = document.createElement('text');
 				  text.textContent = address2
 				  infowincontent.appendChild(text);
+				  
+				  var descriptionText = document.createElement('text');
+					text.textContent = description;
+				  infowincontent.appendChild(strong);
+				  infowincontent.appendChild(document.createElement('br'));
 				  var icon = {};
 				  var marker = new google.maps.Marker({
 					map: resultsMap,
