@@ -17,7 +17,6 @@
 
 	 
 	$eventID = $_GET["eid"];
-	$eventID = mysql_real_escape_string( $eventID);
 	
 	$query = "SELECT * FROM `events` WHERE id = $eventID";
 	
