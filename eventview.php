@@ -218,5 +218,5 @@ text-align: center;
         <span class="w3-tag w3-blue">Vegetarian</span>
 		</p>
 	<button id="return" type="button" value="Go!">Return</button>
-
+</div>
 </html>
