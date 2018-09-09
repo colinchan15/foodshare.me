@@ -102,6 +102,8 @@
             center: {lat: 39.298456, lng:  -76.576585}
         });
         var geocoder = new google.maps.Geocoder();
+		
+		geocodeAddress(geocoder, map);
 
         document.getElementById('submit').addEventListener('click', function() {
             geocodeAddress(geocoder, map);
@@ -143,7 +145,8 @@
 				  var text = document.createElement('text');
 				  text.textContent = address2
 				  infowincontent.appendChild(text);
-				  
+				  infowincontent.appendChild(document.createElement('br'));
+
 				  var descriptionText = document.createElement('text');
 				  descriptionText.textContent = description;
 				  infowincontent.appendChild(descriptionText);
