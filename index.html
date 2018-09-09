@@ -126,7 +126,7 @@
 				var markers = xml.documentElement.getElementsByTagName('marker');
 				Array.prototype.forEach.call(markers, function(markerElem) {
 				  var id = markerElem.getAttribute('id');
-				  var name = markerElem.getAttribute('name');
+				  var name = markerElem.getAttribute('host');
 				  var address2 = markerElem.getAttribute('address');
 				  var description = markerElem.getAttribute('description');
 
@@ -152,8 +152,8 @@
 				  var createA = document.createElement('a');
 				  var createAText = document.createTextNode('More details');
 					createA.setAttribute('href', ("eventview.php?eid="+id));
-				  descriptionText.textContent = description;
-				  infowincontent.appendChild(descriptionText);
+					createA.appendChild(createAText);
+					infowincontent.appendChild(createA);
 				  
 				  var icon = {};
 				  var marker = new google.maps.Marker({
